@@ -7,26 +7,6 @@ export interface Video {
   orientation: "portrait" | "landscape";
 }
 
-/** Placeholder SVG poster until real thumbnails / video APIs are wired in */
-function poster(id: string, title: string, hue: number, orientation: "portrait" | "landscape"): string {
-  const safe = title.replace(/&/g, "&amp;").replace(/</g, "&lt;");
-  const w = orientation === "landscape" ? 960 : 640;
-  const h = orientation === "landscape" ? 540 : 960;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-    <defs>
-      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stop-color="hsl(${hue},55%,18%)"/>
-        <stop offset="100%" stop-color="hsl(${hue + 20},45%,8%)"/>
-      </linearGradient>
-    </defs>
-    <rect width="${w}" height="${h}" fill="url(#g)"/>
-    <rect x="20" y="20" width="${w - 40}" height="${h - 40}" rx="14" fill="none" stroke="hsla(42,70%,55%,0.35)" stroke-width="2"/>
-    <text x="${w / 2}" y="${h / 2 - 8}" text-anchor="middle" fill="hsla(42,80%,70%,0.9)" font-family="Georgia,serif" font-size="${orientation === "landscape" ? 32 : 28}" font-weight="700">${safe}</text>
-    <text x="${w / 2}" y="${h / 2 + 28}" text-anchor="middle" fill="hsla(0,0%,100%,0.35)" font-family="Arial,sans-serif" font-size="16">Bangla Plus · #${id}</text>
-  </svg>`;
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-}
-
 /**
  * Section 1 — Featured Originals: 10 portrait
  * Section 2 — Romance & Drama:    10 landscape
