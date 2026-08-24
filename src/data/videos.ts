@@ -27,23 +27,6 @@ function poster(id: string, title: string, hue: number, orientation: "portrait" 
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }
 
-function v(
-  id: string,
-  name: string,
-  category: string,
-  hue: number,
-  orientation: "portrait" | "landscape",
-): Video {
-  return {
-    id,
-    name,
-    videoPath: "",
-    category,
-    orientation,
-    thumbnail: poster(id, name, hue, orientation),
-  };
-}
-
 /**
  * Section 1 — Featured Originals: 10 portrait
  * Section 2 — Romance & Drama:    10 landscape

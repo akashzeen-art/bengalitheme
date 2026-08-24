@@ -117,7 +117,7 @@ function VideoGrid({
       : cols === 5
         ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
         : "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6";
-  const aspectClass = aspect === "landscape" ? "aspect-[1350/760]" : "aspect-[1080/1350]";
+  const aspectClass = aspect === "landscape" ? "aspect-[1350/760]" : "aspect-[1080/1350]"; // eslint-disable-line
 
   return (
     <div className={`max-w-7xl mx-auto grid ${colClass} gap-3 sm:gap-4`}>
